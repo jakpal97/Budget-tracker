@@ -1,0 +1,137 @@
+.container {
+	padding: 20px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.headerTitle {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #2d3748;
+	margin: 0;
+}
+
+.loadingContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 300px;
+}
+
+.loadingSpinner {
+	width: 40px;
+	height: 40px;
+	border: 3px solid rgba(52, 152, 219, 0.1);
+	border-radius: 50%;
+	border-top-color: #3498db;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loadingText {
+	margin-top: 16px;
+	color: #3498db;
+	font-size: 1.1rem;
+}
+
+.errorCard {
+	text-align: center;
+	padding: 24px;
+}
+
+.errorTitle {
+	color: #e53e3e;
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin: 0 0 8px 0;
+}
+
+.errorText {
+	color: #4a5568;
+	margin: 0 0 16px 0;
+}
+
+.errorActions {
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.formGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.label {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: #4a5568;
+}
+
+.input,
+.select,
+.textarea {
+	padding: 8px 12px;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	font-size: 1rem;
+	color: #2d3748;
+	background-color: white;
+	transition: border-color 0.2s ease;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+	outline: none;
+	border-color: #3498db;
+	box-shadow: 0 0 0 1px #3498db;
+}
+
+.input:disabled,
+.select:disabled,
+.textarea:disabled {
+	background-color: #f7fafc;
+	cursor: not-allowed;
+}
+
+.select {
+	cursor: pointer;
+}
+
+.textarea {
+	resize: vertical;
+	min-height: 100px;
+}
+
+.formActions {
+	display: flex;
+	gap: 12px;
+	margin-top: 12px;
+	padding-top: 20px;
+	border-top: 1px solid #e2e8f0;
+}
+
+.formActions button {
+	flex: 1;
+}

@@ -1,0 +1,169 @@
+.container {
+	padding: 20px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.card {
+	background: white;
+	border-radius: 8px;
+	padding: 24px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 0 24px 0;
+	color: #333;
+}
+
+.loadingContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 300px;
+}
+
+.loadingSpinner {
+	width: 40px;
+	height: 40px;
+	border: 3px solid rgba(52, 152, 219, 0.1);
+	border-radius: 50%;
+	border-top-color: #3498db;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loadingText {
+	margin-top: 16px;
+	color: #3498db;
+	font-size: 1.1rem;
+}
+
+.errorContainer {
+	background-color: #ffebee;
+	padding: 12px;
+	border-radius: 6px;
+	margin-bottom: 20px;
+}
+
+.errorText {
+	color: #c62828;
+	font-size: 14px;
+	margin: 0;
+}
+
+.chartContainer {
+	margin: 24px 0;
+}
+
+.chart {
+	height: 300px;
+	position: relative;
+}
+
+.summaryContainer {
+	margin-top: 32px;
+	padding-top: 24px;
+	border-top: 1px solid #eee;
+}
+
+.summaryTitle {
+	font-size: 20px;
+	font-weight: 600;
+	color: #333;
+	margin: 0 0 16px 0;
+}
+
+.totalAmount {
+	font-size: 18px;
+	font-weight: 500;
+	color: #2e7d32;
+	margin: 0 0 24px 0;
+}
+
+.userSummaries {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.userSummary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 0;
+	border-bottom: 1px solid #eee;
+}
+
+.userSummary:last-child {
+	border-bottom: none;
+}
+
+.userInfo {
+	flex: 1;
+}
+
+.userName {
+	font-size: 16px;
+	font-weight: 500;
+	color: #333;
+	margin: 0 0 4px 0;
+}
+
+.userEmail {
+	font-size: 14px;
+	color: #666;
+	margin: 0;
+}
+
+.userAmount {
+	text-align: right;
+}
+
+.amount {
+	font-size: 16px;
+	font-weight: 600;
+	color: #333;
+	margin: 0 0 4px 0;
+}
+
+.percentage {
+	font-size: 14px;
+	color: #666;
+	margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+	.container {
+		padding: 16px;
+	}
+
+	.card {
+		padding: 16px;
+	}
+
+	.chart {
+		height: 250px;
+	}
+
+	.userSummary {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.userAmount {
+		text-align: left;
+		width: 100%;
+	}
+}

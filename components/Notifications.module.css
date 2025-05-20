@@ -1,0 +1,129 @@
+.container {
+	position: relative;
+}
+
+.bellContainer {
+	padding: 8px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.bellContainer:hover {
+	opacity: 0.8;
+}
+
+.badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #e74c3c;
+	border-radius: 10px;
+	min-width: 20px;
+	height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.badgeText {
+	color: white;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.notificationsContainer {
+	position: absolute;
+	top: 48px;
+	right: 0;
+	width: 300px;
+	max-height: 400px;
+	z-index: 1000;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	overflow: hidden;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0;
+	padding: 12px;
+	border-bottom: 1px solid #eee;
+}
+
+.notificationsList {
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.notificationItem {
+	width: 100%;
+	padding: 12px;
+	border: none;
+	background: none;
+	text-align: left;
+	cursor: pointer;
+	border-bottom: 1px solid #eee;
+	transition: background-color 0.2s;
+}
+
+.notificationItem:hover {
+	background-color: #f5f5f5;
+}
+
+.notificationTitle {
+	font-size: 16px;
+	font-weight: 500;
+	margin: 0 0 4px 0;
+	color: #333;
+}
+
+.notificationMessage {
+	font-size: 14px;
+	color: #666;
+	margin: 0 0 4px 0;
+}
+
+.notificationDate {
+	font-size: 12px;
+	color: #999;
+	margin: 0;
+}
+
+.loadingText {
+	padding: 12px;
+	text-align: center;
+	color: #666;
+	margin: 0;
+}
+
+.emptyText {
+	padding: 12px;
+	text-align: center;
+	color: #666;
+	margin: 0;
+}
+
+/* Scrollbar styles */
+.notificationsList::-webkit-scrollbar {
+	width: 6px;
+}
+
+.notificationsList::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+.notificationsList::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 3px;
+}
+
+.notificationsList::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}

@@ -1,0 +1,143 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 20px;
+	background-color: #f5f5f5;
+}
+
+.formContainer {
+	width: 100%;
+	max-width: 400px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.errorContainer {
+	background-color: #ffebee;
+	padding: 10px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+.errorText {
+	color: #c62828;
+	font-size: 14px;
+	margin: 0;
+}
+
+.inputContainer {
+	margin-bottom: 15px;
+}
+
+.label {
+	display: block;
+	font-size: 16px;
+	margin-bottom: 5px;
+	color: #555;
+}
+
+.input {
+	width: 100%;
+	background-color: #f5f5f5;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ddd;
+}
+
+.input:focus {
+	outline: none;
+	border-color: #3498db;
+}
+
+.signInButton {
+	width: 100%;
+	background-color: #3498db;
+	border: none;
+	border-radius: 5px;
+	padding: 12px;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.signInButton:hover {
+	background-color: #2980b9;
+}
+
+.signInButton:disabled {
+	background-color: #bdc3c7;
+	cursor: not-allowed;
+}
+
+.divider {
+	display: flex;
+	align-items: center;
+	margin: 20px 0;
+}
+
+.dividerLine {
+	flex: 1;
+	height: 1px;
+	background-color: #ddd;
+}
+
+.dividerText {
+	margin: 0 10px;
+	color: #777;
+}
+
+.googleButton {
+	width: 100%;
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 12px;
+	color: #555;
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.googleButton:hover {
+	background-color: #f5f5f5;
+}
+
+.signupContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.signupText {
+	color: #777;
+	margin-right: 5px;
+}
+
+.signupLink {
+	background: none;
+	border: none;
+	color: #3498db;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 0;
+}
+
+.signupLink:hover {
+	text-decoration: underline;
+}

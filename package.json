@@ -1,14 +1,28 @@
 {
-  "private": true,
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "latest",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-native-web": "^0.18.9"
-  }
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"bcryptjs": "^3.0.2",
+		"chart.js": "^4.4.1",
+		"mongoose": "^8.1.1",
+		"next": "latest",
+		"next-auth": "^4.24.5",
+		"pdfkit": "^0.17.1",
+		"react": "^18.2.0",
+		"react-chartjs-2": "^5.2.0",
+		"react-dom": "^18.2.0",
+		"react-feather": "^2.0.10",
+		"tesseract.js": "^6.0.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.16",
+		"@types/react": "^18.2.52",
+		"eslint": "^8.56.0",
+		"eslint-config-next": "^14.1.0",
+		"typescript": "^5.3.3"
+	}
 }

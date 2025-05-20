@@ -1,0 +1,327 @@
+.container {
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.headerTitle {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #2d3748;
+	margin: 0;
+}
+
+.loadingContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 300px;
+}
+
+.loadingSpinner {
+	width: 40px;
+	height: 40px;
+	border: 3px solid rgba(52, 152, 219, 0.1);
+	border-radius: 50%;
+	border-top-color: #3498db;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loadingText {
+	margin-top: 16px;
+	color: #3498db;
+	font-size: 1.1rem;
+}
+
+.errorContainer {
+	text-align: center;
+	padding: 24px;
+	background-color: #fff5f5;
+	border-radius: 8px;
+	margin: 24px 0;
+}
+
+.errorTitle {
+	color: #e53e3e;
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin: 0 0 8px 0;
+}
+
+.errorText {
+	color: #4a5568;
+	margin: 0 0 16px 0;
+}
+
+.errorActions {
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+}
+
+.filtersContainer {
+	margin-bottom: 24px;
+	padding: 16px;
+}
+
+.searchInput {
+	flex: 1;
+	min-width: 200px;
+}
+
+.filterRow {
+	margin-bottom: 16px;
+}
+
+.filterLabel {
+	display: block;
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 8px;
+	color: #555;
+}
+
+.categoryFilters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.categoryPill {
+	padding: 6px 12px;
+	border-radius: 16px;
+	background-color: #f0f0f0;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	color: #555;
+	transition: all 0.2s ease;
+}
+
+.categoryPill:hover {
+	background-color: #e0e0e0;
+}
+
+.categoryPillActive {
+	color: white;
+}
+
+.dateFilters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.datePill {
+	padding: 6px 12px;
+	border-radius: 16px;
+	background-color: #f0f0f0;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	color: #555;
+	transition: all 0.2s ease;
+}
+
+.datePill:hover {
+	background-color: #e0e0e0;
+}
+
+.datePillActive {
+	background-color: #3498db;
+	color: white;
+}
+
+.sortControl {
+	width: 100%;
+	max-width: 300px;
+}
+
+.select {
+	padding: 8px 12px;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	background-color: white;
+	color: #4a5568;
+	font-size: 0.875rem;
+	cursor: pointer;
+	min-width: 150px;
+}
+
+.select:focus {
+	outline: none;
+	border-color: #3498db;
+	box-shadow: 0 0 0 1px #3498db;
+}
+
+.expensesContainer {
+	display: grid;
+	gap: 16px;
+}
+
+.expensesList {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.filterSection {
+	display: flex;
+	gap: 12px;
+	margin-bottom: 24px;
+	flex-wrap: wrap;
+}
+
+.error {
+	background-color: #fee2e2;
+	border: 1px solid #fecaca;
+	border-radius: 8px;
+	padding: 16px;
+	margin-bottom: 24px;
+	color: #dc2626;
+}
+
+.expenseCard {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	grid-template-areas:
+		'amount category date'
+		'title title title'
+		'actions actions actions';
+	gap: 12px;
+	padding: 16px;
+	position: relative;
+}
+
+.expenseCard:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.expenseCard.deleting {
+	opacity: 0.5;
+	transform: translateX(-10px);
+}
+
+.expenseAmount {
+	grid-area: amount;
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: #2d3748;
+}
+
+.categoryBadge {
+	grid-area: category;
+	padding: 4px 12px;
+	border-radius: 16px;
+	font-size: 0.875rem;
+	color: white;
+	text-align: center;
+	justify-self: start;
+}
+
+.expenseDate {
+	grid-area: date;
+	color: #718096;
+	font-size: 0.875rem;
+	align-self: center;
+}
+
+.expenseTitle {
+	grid-area: title;
+	font-size: 1rem;
+	color: #4a5568;
+}
+
+.expenseDescription {
+	color: #666;
+	font-size: 0.875rem;
+	margin: 12px 0;
+	line-height: 1.5;
+}
+
+.expenseActions {
+	grid-area: actions;
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	margin-top: 8px;
+}
+
+.actionButton {
+	min-width: 100px;
+}
+
+.emptyState {
+	text-align: center;
+	padding: 32px 16px;
+}
+
+.emptyStateText {
+	color: #777;
+	font-size: 16px;
+	margin-bottom: 16px;
+}
+
+.resetButton {
+	margin-top: 16px;
+}
+
+.deleteButton {
+	background-color: #dc3545;
+	color: white;
+	border: none;
+	padding: 8px 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.deleteButton:hover:not(:disabled) {
+	background-color: #c82333;
+}
+
+.deleteButton:disabled {
+	background-color: #6c757d;
+	cursor: not-allowed;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+	.container {
+		padding: 16px;
+	}
+
+	.header {
+		flex-direction: column;
+		gap: 16px;
+		align-items: stretch;
+	}
+
+	.filterSection {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.select {
+		width: 100%;
+	}
+
+	.expensesList {
+		grid-template-columns: 1fr;
+	}
+}

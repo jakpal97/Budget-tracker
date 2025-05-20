@@ -1,0 +1,178 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	background-color: #f5f5f5;
+	min-height: 100vh;
+}
+
+.loadingContainer {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sidebar {
+	width: 240px;
+	background-color: white;
+	border-right: 1px solid #e0e0e0;
+	padding: 15px;
+	padding-top: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 10;
+}
+
+.logo {
+	margin-bottom: 30px;
+}
+
+.logoText {
+	font-size: 22px;
+	font-weight: bold;
+	color: #3498db;
+	margin: 0;
+}
+
+.menuContainer {
+	flex: 1;
+}
+
+.menuItem {
+	display: flex;
+	align-items: center;
+	padding: 12px 15px;
+	border-radius: 8px;
+	margin-bottom: 5px;
+	width: 100%;
+	border: none;
+	background: none;
+	cursor: pointer;
+	text-align: left;
+}
+
+.menuItem:hover {
+	background-color: #f5f5f5;
+}
+
+.activeMenuItem {
+	background-color: #e3f2fd;
+}
+
+.menuIcon {
+	margin-right: 10px;
+	font-size: 18px;
+}
+
+.menuText {
+	font-size: 16px;
+	color: #555;
+}
+
+.activeMenuText {
+	font-weight: bold;
+	color: #3498db;
+}
+
+.userSection {
+	border-top: 1px solid #e0e0e0;
+	padding-top: 15px;
+	margin-top: 15px;
+}
+
+.userInfo {
+	margin-bottom: 10px;
+}
+
+.userName {
+	font-weight: bold;
+	font-size: 16px;
+	margin: 0;
+}
+
+.userEmail {
+	font-size: 14px;
+	color: #777;
+	margin: 0;
+}
+
+.signOutButton {
+	background-color: #f5f5f5;
+	padding: 10px;
+	border-radius: 5px;
+	width: 100%;
+	border: none;
+	cursor: pointer;
+	text-align: center;
+}
+
+.signOutButton:hover {
+	background-color: #e74c3c;
+}
+
+.signOutButton:hover .signOutText {
+	color: white;
+}
+
+.signOutText {
+	color: #e74c3c;
+	font-weight: 500;
+}
+
+.content {
+	flex: 1;
+	padding: 15px;
+	padding-bottom: 80px; /* Zapewnia przestrzeń na dolny pasek nawigacyjny na mobile */
+}
+
+.contentWithSidebar {
+	margin-left: 240px; /* Szerokość sidebara */
+}
+
+.mobileNavbar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+	border-top: 1px solid #e0e0e0;
+	height: 60px;
+	z-index: 10;
+}
+
+.mobileNavItem {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 8px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.mobileNavItem:hover {
+	background-color: #f5f5f5;
+}
+
+.activeMobileNavItem {
+	background-color: #e3f2fd;
+}
+
+.mobileNavIcon {
+	font-size: 22px;
+	margin-bottom: 2px;
+}
+
+.mobileNavText {
+	font-size: 12px;
+}

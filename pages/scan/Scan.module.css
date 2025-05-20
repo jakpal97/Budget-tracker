@@ -1,0 +1,172 @@
+.container {
+	padding: 20px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.scanContainer {
+	min-height: 300px;
+	background: white;
+	border-radius: 8px;
+	padding: 24px;
+}
+
+.initialView {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	text-align: center;
+}
+
+.initialText {
+	font-size: 16px;
+	color: #666;
+	margin-bottom: 20px;
+}
+
+.buttonGroup {
+	display: flex;
+	gap: 12px;
+	margin-top: 10px;
+	width: 100%;
+	justify-content: center;
+}
+
+.cameraContainer {
+	min-height: 300px;
+}
+
+.cameraView {
+	width: 100%;
+	height: 300px;
+	border-radius: 8px;
+	background-color: #333;
+	margin-bottom: 16px;
+	overflow: hidden;
+}
+
+.cameraMock {
+	height: 250px;
+	background-color: #333;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.cameraText {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.cameraSubtext {
+	color: white;
+	font-size: 14px;
+	margin-top: 8px;
+}
+
+.cameraControls {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.previewContainer {
+	min-height: 300px;
+}
+
+.previewTitle {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 12px;
+	color: #333;
+}
+
+.imagePreview {
+	margin-bottom: 16px;
+	display: flex;
+	justify-content: center;
+}
+
+.previewImage {
+	width: 100%;
+	max-width: 500px;
+	height: auto;
+	border-radius: 8px;
+	object-fit: contain;
+}
+
+.mockImage {
+	height: 150px;
+	width: 100%;
+	max-width: 500px;
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px dashed #ddd;
+}
+
+.mockImageText {
+	color: #666;
+	font-size: 16px;
+}
+
+.errorContainer {
+	background-color: #ffebee;
+	padding: 12px;
+	border-radius: 8px;
+	margin: 8px 0;
+}
+
+.errorText {
+	color: #c62828;
+	font-size: 14px;
+}
+
+/* Loading styles */
+.loadingContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 300px;
+}
+
+.loadingSpinner {
+	width: 40px;
+	height: 40px;
+	border: 3px solid rgba(52, 152, 219, 0.1);
+	border-radius: 50%;
+	border-top-color: #3498db;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loadingText {
+	margin-top: 16px;
+	color: #3498db;
+	font-size: 1.1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+	.container {
+		padding: 16px;
+	}
+
+	.buttonGroup {
+		flex-direction: column;
+	}
+}
