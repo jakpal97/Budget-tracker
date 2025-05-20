@@ -16,11 +16,6 @@
 		"MONGODB_URI": "@mongodb-uri",
 		"NEXTAUTH_URL": "@nextauth-url",
 		"NEXTAUTH_SECRET": "@nextauth-secret"
-	},
-	"functions": {
-		"api/receipts/scan.js": {
-			"memory": 3008,
-			"maxDuration": 60
-		}
 	}
+
 }
