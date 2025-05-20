@@ -11,9 +11,9 @@ export default function SignIn() {
 	const router = useRouter()
 	const { data: session } = useSession()
 
-	// Jeśli użytkownik jest już zalogowany, przekieruj go na stronę główną
+	// Jeśli użytkownik jest już zalogowany, przekieruj go na dashboard
 	if (session) {
-		router.push('/')
+		router.push('/dashboard')
 		return null
 	}
 
@@ -31,8 +31,8 @@ export default function SignIn() {
 			if (result.error) {
 				setError(result.error)
 			} else {
-				// Przekieruj na stronę główną po pomyślnym logowaniu
-				router.push('/')
+				// Przekieruj na dashboard po pomyślnym logowaniu
+				router.push('/dashboard')
 			}
 		} catch (err) {
 			setError('Wystąpił błąd podczas logowania')
@@ -43,7 +43,7 @@ export default function SignIn() {
 	}
 
 	const handleGoogleSignIn = () => {
-		signIn('google', { callbackUrl: '/' })
+		signIn('google', { callbackUrl: '/dashboard' })
 	}
 
 	return (

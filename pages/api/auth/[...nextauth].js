@@ -6,11 +6,8 @@ import { connectToDatabase } from '../../../lib/db'
 import User from '../../../models/User'
 import { Category } from '../../../models/Category'
 
-
 export const authOptions = {
-	
 	providers: [
-		
 		CredentialsProvider({
 			name: 'Credentials',
 			credentials: {
@@ -18,24 +15,20 @@ export const authOptions = {
 				password: { label: 'Hasło', type: 'password' },
 			},
 			async authorize(credentials) {
-			
 				await connectToDatabase()
 
-				
 				const user = await User.findOne({ email: credentials.email })
 
 				if (!user) {
 					throw new Error('Nie znaleziono użytkownika o podanym adresie email')
 				}
 
-			
 				const isValid = await bcrypt.compare(credentials.password, user.password)
 
 				if (!isValid) {
 					throw new Error('Nieprawidłowe hasło')
 				}
 
-			
 				return {
 					id: user._id.toString(),
 					name: user.name,
@@ -45,7 +38,6 @@ export const authOptions = {
 			},
 		}),
 
-		
 		GoogleProvider({
 			clientId: process.env.GOOGLE_ID,
 			clientSecret: process.env.GOOGLE_SECRET,
@@ -59,7 +51,6 @@ export const authOptions = {
 		}),
 	],
 
-	
 	pages: {
 		signIn: '/auth/signin',
 		signOut: '/auth/signout',
@@ -67,43 +58,38 @@ export const authOptions = {
 		newUser: '/auth/new-user',
 	},
 
-
 	session: {
-		strategy: 'jwt', 
-		maxAge: 1 * 24 * 60 * 60, 
+		strategy: 'jwt',
+		maxAge: 1 * 24 * 60 * 60,
 	},
 
-	
 	callbacks: {
-		
+		async redirect({ url, baseUrl }) {
+			return `${baseUrl}/dashboard`
+		},
+
 		async jwt({ token, user, account }) {
-			
 			if (user) {
 				token.userId = user.id
 			}
 			return token
 		},
 
-		
 		async session({ session, token }) {
-			
 			if (token) {
 				session.user.id = token.userId
 			}
 			return session
 		},
 
-	
 		async signIn({ user, account, profile }) {
 			try {
-			
 				if (account && account.provider === 'google') {
 					await connectToDatabase()
 
 					const existingUser = await User.findOne({ email: profile.email })
 
 					if (!existingUser) {
-						
 						const newUser = new User({
 							name: profile.name,
 							email: profile.email,
@@ -115,7 +101,6 @@ export const authOptions = {
 
 						await Category.createDefaultCategories(newUser._id)
 					} else {
-						
 						if (existingUser.name !== profile.name || existingUser.image !== profile.picture) {
 							existingUser.name = profile.name
 							existingUser.image = profile.picture
@@ -124,7 +109,7 @@ export const authOptions = {
 					}
 				}
 
-				return true 
+				return true
 			} catch (error) {
 				console.error('Błąd podczas logowania:', error)
 				return false
@@ -132,11 +117,9 @@ export const authOptions = {
 		},
 	},
 
-	
 	secret: process.env.NEXTAUTH_SECRET,
 	debug: process.env.NODE_ENV === 'development',
 }
-
 
 export const config = {
 	api: {

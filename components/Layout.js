@@ -67,6 +67,14 @@ export default function Layout({ children }) {
 		return null
 	}
 
+	// Przekieruj z głównej strony na dashboard
+	if (isAuthenticated && router.pathname === '/') {
+		if (typeof window !== 'undefined') {
+			router.push('/dashboard')
+		}
+		return null
+	}
+
 	return (
 		<div className={styles.container}>
 			{/* Pasek boczny (widoczny tylko na większych ekranach) */}
