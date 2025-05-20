@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-import { signIn } from 'next-auth/react'
-import Button from '../../components/common/Button'
-import Input from '../../components/common/Input'
-import styles from './SignUp.module.css'
+import styles from './signin.module.css'
 
 export default function SignUp() {
 	const [name, setName] = useState('')
@@ -11,14 +8,12 @@ export default function SignUp() {
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const [error, setError] = useState('')
-	const [success, setSuccess] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 	const router = useRouter()
 
 	const handleSignUp = async e => {
 		e.preventDefault()
 		setError('')
-		setSuccess('')
 
 		if (!name || !email || !password || !confirmPassword) {
 			setError('Wszystkie pola są wymagane')
@@ -48,20 +43,8 @@ export default function SignUp() {
 			const data = await response.json()
 
 			if (data.success) {
-				setSuccess('Konto zostało utworzone pomyślnie. Możesz się teraz zalogować.')
-
-				// Automatyczne logowanie po rejestracji
-				const result = await signIn('credentials', {
-					redirect: false,
-					email,
-					password,
-				})
-
-				if (result.ok) {
-					router.push('/')
-				} else {
-					setError('Nie udało się automatycznie zalogować. Spróbuj zalogować się ręcznie.')
-				}
+				// Przekieruj do strony logowania po udanej rejestracji
+				router.push('/auth/signin')
 			} else {
 				setError(data.message || 'Wystąpił błąd podczas rejestracji')
 			}
@@ -84,37 +67,36 @@ export default function SignUp() {
 					</div>
 				)}
 
-				{success && (
-					<div className={styles.successContainer}>
-						<p className={styles.successText}>{success}</p>
-					</div>
-				)}
-
 				<form onSubmit={handleSignUp}>
 					<div className={styles.inputContainer}>
-						<Input
-							label="Imię i nazwisko"
+						<label className={styles.label}>Imię i nazwisko</label>
+						<input
+							className={styles.input}
 							value={name}
 							onChange={e => setName(e.target.value)}
 							placeholder="Twoje imię i nazwisko"
+							type="text"
 							required
 						/>
 					</div>
 
 					<div className={styles.inputContainer}>
-						<Input
-							label="Email"
+						<label className={styles.label}>Email</label>
+						<input
+							className={styles.input}
 							value={email}
 							onChange={e => setEmail(e.target.value)}
 							placeholder="Twój adres email"
 							type="email"
 							required
+							autoCapitalize="off"
 						/>
 					</div>
 
 					<div className={styles.inputContainer}>
-						<Input
-							label="Hasło"
+						<label className={styles.label}>Hasło</label>
+						<input
+							className={styles.input}
 							value={password}
 							onChange={e => setPassword(e.target.value)}
 							placeholder="Utwórz hasło"
@@ -124,8 +106,9 @@ export default function SignUp() {
 					</div>
 
 					<div className={styles.inputContainer}>
-						<Input
-							label="Potwierdź hasło"
+						<label className={styles.label}>Potwierdź hasło</label>
+						<input
+							className={styles.input}
 							value={confirmPassword}
 							onChange={e => setConfirmPassword(e.target.value)}
 							placeholder="Powtórz hasło"
@@ -134,18 +117,16 @@ export default function SignUp() {
 						/>
 					</div>
 
-					<Button type="submit" disabled={isLoading} className={styles.signUpButton}>
+					<button type="submit" className={styles.signInButton} disabled={isLoading}>
 						{isLoading ? 'Rejestracja...' : 'Zarejestruj się'}
-					</Button>
+					</button>
 				</form>
 
-				<div className={styles.signinContainer}>
-					<p className={styles.signinText}>
-						Masz już konto?{' '}
-						<button onClick={() => router.push('/auth/signin')} className={styles.signinLink}>
-							Zaloguj się
-						</button>
-					</p>
+				<div className={styles.signupContainer}>
+					<span className={styles.signupText}>Masz już konto?</span>
+					<button className={styles.signupLink} onClick={() => router.push('/auth/signin')}>
+						Zaloguj się
+					</button>
 				</div>
 			</div>
 		</div>

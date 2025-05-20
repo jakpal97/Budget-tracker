@@ -1,31 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-  text: {
-    alignItems: "center",
-    fontSize: 24,
-    marginBottom: 24,
-  },
-  link: {
-    color: "blue",
-  },
-});
+import Link from 'next/link'
+import styles from '../styles/Alternate.module.css'
 
 export default function Alternate() {
-  return (
-    <View style={styles.container}>
-      <Text accessibilityRole="header" style={styles.text}>
-        Alternate Page
-      </Text>
+	return (
+		<div className={styles.container}>
+			<h1 className={styles.text}>Alternate Page</h1>
 
-      <Text style={styles.link} accessibilityRole="link" href={`/`}>
-        Go Back
-      </Text>
-    </View>
-  );
+			<Link href="/" className={styles.link}>
+				Go Back
+			</Link>
+		</div>
+	)
 }

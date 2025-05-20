@@ -320,7 +320,7 @@ export default function BudgetsPage() {
 		setIsBudgetModalVisible(true)
 	}
 
-	// Obsługa otwierania modalu celu oszczędnościowego
+	
 	const handleOpenGoalModal = (goal = null) => {
 		if (goal) {
 			// Tryb edycji
@@ -354,7 +354,7 @@ export default function BudgetsPage() {
 
 		setIsGoalModalVisible(true)
 	}
-	// Obsługa zamykania modali
+	
 	const handleCloseBudgetModal = () => {
 		setIsBudgetModalVisible(false)
 	}
@@ -363,7 +363,7 @@ export default function BudgetsPage() {
 		setIsGoalModalVisible(false)
 	}
 
-	// Aktualizacja pól formularza budżetu
+	
 	const handleBudgetFormChange = (field, value) => {
 		setBudgetForm(prev => ({
 			...prev,
@@ -375,7 +375,7 @@ export default function BudgetsPage() {
 		}))
 	}
 
-	// Aktualizacja pól formularza celu
+
 	const handleGoalFormChange = (field, value) => {
 		setGoalForm(prev => ({
 			...prev,
@@ -387,7 +387,7 @@ export default function BudgetsPage() {
 		}))
 	}
 
-	// Walidacja formularza budżetu
+	
 	const validateBudgetForm = () => {
 		const errors = {}
 
@@ -403,7 +403,6 @@ export default function BudgetsPage() {
 			errors.startDate = 'Data początkowa jest wymagana'
 		}
 
-		// Aktualizacja stanu błędów
 		setBudgetForm(prev => ({
 			...prev,
 			errors,
@@ -412,7 +411,7 @@ export default function BudgetsPage() {
 		return Object.keys(errors).length === 0
 	}
 
-	// Walidacja formularza celu
+
 	const validateGoalForm = () => {
 		const errors = {}
 
@@ -434,7 +433,7 @@ export default function BudgetsPage() {
 			}
 		}
 
-		// Aktualizacja stanu błędów
+		
 		setGoalForm(prev => ({
 			...prev,
 			errors,
@@ -443,7 +442,7 @@ export default function BudgetsPage() {
 		return Object.keys(errors).length === 0
 	}
 
-	// Zapisywanie budżetu
+
 	const handleSaveBudget = async () => {
 		if (!validateBudgetForm()) {
 			return
@@ -465,7 +464,7 @@ export default function BudgetsPage() {
 			let response
 
 			if (editingBudgetId) {
-				// Aktualizacja istniejącego budżetu
+				
 				response = await fetch('/api/budgets', {
 					method: 'PATCH',
 					headers: {
@@ -477,7 +476,7 @@ export default function BudgetsPage() {
 					}),
 				})
 			} else {
-				// Dodanie nowego budżetu
+			
 				response = await fetch('/api/budgets', {
 					method: 'POST',
 					headers: {
@@ -492,10 +491,10 @@ export default function BudgetsPage() {
 				throw new Error(errorData.message || 'Wystąpił błąd')
 			}
 
-			// Odświeżamy listę budżetów
+			
 			fetchData()
 
-			// Zamykamy modal
+			
 			setIsBudgetModalVisible(false)
 		} catch (error) {
 			console.error('Błąd podczas zapisywania budżetu:', error)
@@ -511,7 +510,7 @@ export default function BudgetsPage() {
 		}
 	}
 
-	// Zapisywanie celu oszczędnościowego
+	
 	const handleSaveGoal = async () => {
 		if (!validateGoalForm()) {
 			return
@@ -534,7 +533,7 @@ export default function BudgetsPage() {
 			let response
 
 			if (editingGoalId) {
-				// Aktualizacja istniejącego celu
+				
 				response = await fetch('/api/goals', {
 					method: 'PATCH',
 					headers: {
@@ -546,7 +545,7 @@ export default function BudgetsPage() {
 					}),
 				})
 			} else {
-				// Dodanie nowego celu
+			
 				response = await fetch('/api/goals', {
 					method: 'POST',
 					headers: {
@@ -561,10 +560,10 @@ export default function BudgetsPage() {
 				throw new Error(errorData.message || 'Wystąpił błąd')
 			}
 
-			// Odświeżamy listę celów
+			
 			fetchData()
 
-			// Zamykamy modal
+			
 			setIsGoalModalVisible(false)
 		} catch (error) {
 			console.error('Błąd podczas zapisywania celu:', error)
@@ -579,7 +578,7 @@ export default function BudgetsPage() {
 			setIsSaving(false)
 		}
 	}
-	// Usuwanie budżetu
+	
 	const handleDeleteBudget = async id => {
 		if (!confirm('Czy na pewno chcesz usunąć ten budżet?')) {
 			return
@@ -597,7 +596,7 @@ export default function BudgetsPage() {
 				throw new Error(errorData.message || 'Wystąpił błąd')
 			}
 
-			// Odświeżamy listę budżetów
+			
 			fetchData()
 		} catch (error) {
 			console.error('Błąd podczas usuwania budżetu:', error)
@@ -607,7 +606,7 @@ export default function BudgetsPage() {
 		}
 	}
 
-	// Usuwanie celu oszczędnościowego
+	
 	const handleDeleteGoal = async id => {
 		if (!confirm('Czy na pewno chcesz usunąć ten cel oszczędnościowy?')) {
 			return
@@ -625,7 +624,7 @@ export default function BudgetsPage() {
 				throw new Error(errorData.message || 'Wystąpił błąd')
 			}
 
-			// Odświeżamy listę celów
+		
 			fetchData()
 		} catch (error) {
 			console.error('Błąd podczas usuwania celu:', error)
@@ -635,7 +634,7 @@ export default function BudgetsPage() {
 		}
 	}
 
-	// Aktualizacja funkcji handleDeleteSharedBudget
+	
 	const handleDeleteSharedBudget = async id => {
 		if (!confirm('Czy na pewno chcesz usunąć ten wspólny budżet?')) {
 			return
@@ -653,7 +652,7 @@ export default function BudgetsPage() {
 				throw new Error(errorData.message || 'Nie udało się usunąć budżetu')
 			}
 
-			// Odświeżamy listę budżetów
+		
 			fetchData()
 		} catch (error) {
 			console.error('Błąd podczas usuwania wspólnego budżetu:', error)

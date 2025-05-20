@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useRouter } from 'next/router'
 import Card from '../../components/common/Card'
 import Button from '../../components/common/Button'
+import styles from '../../styles/SharedBudget.module.css'
 
 export default function SharedBudgetDetails() {
 	const router = useRouter()
@@ -33,101 +33,33 @@ export default function SharedBudgetDetails() {
 		}
 	}
 
-	if (loading) return <Text style={styles.loadingText}>Ładowanie...</Text>
-	if (error) return <Text style={styles.errorText}>{error}</Text>
-	if (!budget) return <Text style={styles.errorText}>Nie znaleziono budżetu</Text>
+	if (loading) return <div className={styles.loadingText}>Ładowanie...</div>
+	if (error) return <div className={styles.errorText}>{error}</div>
+	if (!budget) return <div className={styles.errorText}>Nie znaleziono budżetu</div>
 
 	return (
-		<ScrollView style={styles.container}>
-			<Card style={styles.header}>
-				<Text style={styles.title}>{budget.name}</Text>
-				<Text style={styles.description}>{budget.description}</Text>
-				<Text style={styles.budget}>Budżet miesięczny: {budget.monthlyBudget.toFixed(2)} zł</Text>
+		<div className={styles.container}>
+			<Card className={styles.header}>
+				<h1 className={styles.title}>{budget.name}</h1>
+				<p className={styles.description}>{budget.description}</p>
+				<p className={styles.budget}>Budżet miesięczny: {budget.monthlyBudget.toFixed(2)} zł</p>
 			</Card>
 
-			<Card style={styles.section}>
-				<Text style={styles.sectionTitle}>Członkowie ({budget.members.length})</Text>
+			<Card className={styles.section}>
+				<h2 className={styles.sectionTitle}>Członkowie ({budget.members.length})</h2>
 				{budget.members.map((member, index) => (
-					<View key={index} style={styles.memberItem}>
-						<Text style={styles.memberName}>{member.userId.name || 'Użytkownik'}</Text>
-						<Text style={styles.memberRole}>
+					<div key={index} className={styles.memberItem}>
+						<p className={styles.memberName}>{member.userId.name || 'Użytkownik'}</p>
+						<p className={styles.memberRole}>
 							{member.role === 'owner' ? 'Właściciel' : member.role === 'editor' ? 'Edytor' : 'Przeglądający'}
-						</Text>
-						<Text style={styles.memberShare}>Udział: {member.contributionRatio}%</Text>
-					</View>
+						</p>
+						<p className={styles.memberShare}>Udział: {member.contributionRatio}%</p>
+					</div>
 				))}
-				<Button
-					title="Zaproś osobę"
-					onPress={() => router.push(`/shared-budgets/${id}/invite`)}
-					style={styles.inviteButton}
-				/>
+				<Button onClick={() => router.push(`/shared-budgets/${id}/invite`)} className={styles.inviteButton}>
+					Zaproś osobę
+				</Button>
 			</Card>
-		</ScrollView>
+		</div>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#f8f9fa',
-	},
-	header: {
-		margin: 16,
-		padding: 16,
-	},
-	title: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		marginBottom: 8,
-	},
-	description: {
-		fontSize: 16,
-		color: '#666',
-		marginBottom: 8,
-	},
-	budget: {
-		fontSize: 18,
-		fontWeight: '500',
-		color: '#2E7D32',
-	},
-	section: {
-		margin: 16,
-		padding: 16,
-	},
-	sectionTitle: {
-		fontSize: 18,
-		fontWeight: 'bold',
-		marginBottom: 16,
-	},
-	memberItem: {
-		padding: 12,
-		borderBottomWidth: 1,
-		borderBottomColor: '#eee',
-	},
-	memberName: {
-		fontSize: 16,
-		fontWeight: '500',
-	},
-	memberRole: {
-		fontSize: 14,
-		color: '#666',
-	},
-	memberShare: {
-		fontSize: 14,
-		color: '#2E7D32',
-	},
-	inviteButton: {
-		marginTop: 16,
-	},
-	loadingText: {
-		textAlign: 'center',
-		padding: 20,
-		fontSize: 16,
-	},
-	errorText: {
-		textAlign: 'center',
-		padding: 20,
-		fontSize: 16,
-		color: 'red',
-	},
-})

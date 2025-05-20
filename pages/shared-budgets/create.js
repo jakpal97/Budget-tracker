@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native'
 import { useRouter } from 'next/router'
 import Card from '../../components/common/Card'
 import Button from '../../components/common/Button'
+import styles from './Create.module.css'
 
 export default function CreateSharedBudget() {
 	const router = useRouter()
@@ -49,83 +49,60 @@ export default function CreateSharedBudget() {
 	}
 
 	return (
-		<ScrollView style={styles.container}>
-			<Card style={styles.form}>
-				<Text style={styles.title}>Utwórz nowy wspólny budżet</Text>
+		<div className={styles.container}>
+			<Card className={styles.form}>
+				<h1 className={styles.title}>Utwórz nowy wspólny budżet</h1>
 
-				<View style={styles.inputGroup}>
-					<Text style={styles.label}>Nazwa budżetu*</Text>
-					<TextInput style={styles.input} value={name} onChangeText={setName} placeholder="np. Budżet domowy" />
-				</View>
+				<div className={styles.inputGroup}>
+					<label htmlFor="name" className={styles.label}>
+						Nazwa budżetu*
+					</label>
+					<input
+						id="name"
+						className={styles.input}
+						value={name}
+						onChange={e => setName(e.target.value)}
+						placeholder="np. Budżet domowy"
+						type="text"
+					/>
+				</div>
 
-				<View style={styles.inputGroup}>
-					<Text style={styles.label}>Opis (opcjonalny)</Text>
-					<TextInput
-						style={[styles.input, styles.textArea]}
+				<div className={styles.inputGroup}>
+					<label htmlFor="description" className={styles.label}>
+						Opis (opcjonalny)
+					</label>
+					<textarea
+						id="description"
+						className={`${styles.input} ${styles.textArea}`}
 						value={description}
-						onChangeText={setDescription}
+						onChange={e => setDescription(e.target.value)}
 						placeholder="Opisz cel tego budżetu"
-						multiline
-						numberOfLines={4}
+						rows={4}
 					/>
-				</View>
+				</div>
 
-				<View style={styles.inputGroup}>
-					<Text style={styles.label}>Miesięczny budżet (zł)</Text>
-					<TextInput
-						style={styles.input}
+				<div className={styles.inputGroup}>
+					<label htmlFor="budget" className={styles.label}>
+						Miesięczny budżet (zł)
+					</label>
+					<input
+						id="budget"
+						className={styles.input}
 						value={monthlyBudget}
-						onChangeText={setMonthlyBudget}
+						onChange={e => setMonthlyBudget(e.target.value)}
 						placeholder="0.00"
-						keyboardType="numeric"
+						type="number"
+						step="0.01"
+						min="0"
 					/>
-				</View>
+				</div>
 
-				{error ? <Text style={styles.errorText}>{error}</Text> : null}
+				{error && <p className={styles.errorText}>{error}</p>}
 
-				<Button title={loading ? 'Tworzenie...' : 'Utwórz budżet'} onPress={handleCreate} disabled={loading} />
+				<Button onClick={handleCreate} disabled={loading}>
+					{loading ? 'Tworzenie...' : 'Utwórz budżet'}
+				</Button>
 			</Card>
-		</ScrollView>
+		</div>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#f8f9fa',
-	},
-	form: {
-		margin: 16,
-		padding: 16,
-	},
-	title: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		marginBottom: 20,
-		textAlign: 'center',
-	},
-	inputGroup: {
-		marginBottom: 16,
-	},
-	label: {
-		fontSize: 16,
-		marginBottom: 8,
-		fontWeight: '500',
-	},
-	input: {
-		backgroundColor: 'white',
-		borderWidth: 1,
-		borderColor: '#ddd',
-		borderRadius: 8,
-		padding: 12,
-		fontSize: 16,
-	},
-	textArea: {
-		minHeight: 100,
-		textAlignVertical: 'top',
-	},
-	errorText: {
-		color: 'red',
-		marginBottom: 10,
-	},
-})

@@ -1,0 +1,327 @@
+.container {
+	padding: 20px;
+	min-height: 100vh;
+	background-color: #f8f9fa;
+}
+
+.scanContainer {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 24px;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0 0 16px 0;
+	text-align: center;
+	color: #333;
+}
+
+.description {
+	font-size: 16px;
+	color: #666;
+	text-align: center;
+	margin: 0 0 24px 0;
+	line-height: 1.5;
+}
+
+.buttonGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-top: 24px;
+}
+
+.hiddenInput {
+	display: none;
+}
+
+/* Widok kamery */
+.cameraView {
+	position: relative;
+	width: 100%;
+	height: 400px;
+	background-color: #000;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.cameraPreview {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.cameraControls {
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+	padding: 0 20px;
+}
+
+.captureButton {
+	background-color: #fff !important;
+	color: #333 !important;
+	border-radius: 50% !important;
+	width: 64px !important;
+	height: 64px !important;
+	padding: 0 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Widok podglądu */
+.previewView {
+	width: 100%;
+}
+
+.previewTitle {
+	font-size: 20px;
+	font-weight: 600;
+	margin: 0 0 20px 0;
+	text-align: center;
+	color: #333;
+}
+
+.imagePreview {
+	width: 100%;
+	height: 300px;
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: #f1f3f5;
+	margin-bottom: 20px;
+}
+
+.previewImage {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.mockImage {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #adb5bd;
+}
+
+.tipsContainer {
+	background-color: #e3f2fd;
+	border-radius: 8px;
+	padding: 16px;
+	margin: 16px 0;
+	border: 1px solid #bbdefb;
+}
+
+.tipsTitle {
+	font-size: 16px;
+	font-weight: 600;
+	color: #1976d2;
+	margin: 0 0 12px 0;
+}
+
+.tipsList {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.tipsList li {
+	color: #2196f3;
+	font-size: 14px;
+	margin-bottom: 8px;
+	padding-left: 24px;
+	position: relative;
+}
+
+.tipsList li::before {
+	content: '✓';
+	position: absolute;
+	left: 0;
+	color: #1976d2;
+}
+
+.processingInfo {
+	margin: 16px 0;
+	padding: 16px;
+	background-color: #f8f9fa;
+	border-radius: 8px;
+	text-align: center;
+	border: 1px solid #e9ecef;
+}
+
+.progressBar {
+	width: 100%;
+	height: 6px;
+	background-color: #e9ecef;
+	border-radius: 3px;
+	overflow: hidden;
+	margin-bottom: 12px;
+}
+
+.progressFill {
+	height: 100%;
+	background-color: #4caf50;
+	transition: width 0.3s ease-in-out;
+}
+
+.processingStatus {
+	font-size: 14px;
+	color: #495057;
+	margin: 8px 0;
+	font-weight: 500;
+}
+
+.errorContainer {
+	margin: 16px 0;
+	padding: 16px;
+	background-color: #fff3f3;
+	border-radius: 8px;
+	border: 1px solid #ffe3e3;
+	text-align: center;
+}
+
+.errorText {
+	color: #e03131;
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.loadingContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background-color: #f8f9fa;
+}
+
+.loadingSpinner {
+	width: 40px;
+	height: 40px;
+	border: 3px solid #f1f3f5;
+	border-top-color: #3498db;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+.loadingText {
+	margin-top: 16px;
+	color: #666;
+	font-size: 16px;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.processingButton {
+	position: relative;
+	overflow: hidden;
+}
+
+.processingButton::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+	from {
+		left: -100%;
+	}
+	to {
+		left: 100%;
+	}
+}
+
+.manualEntryForm {
+	padding: 16px;
+	background-color: #fff;
+	border-radius: 8px;
+}
+
+.manualEntryTitle {
+	font-size: 18px;
+	font-weight: 600;
+	color: #333;
+	margin: 0 0 16px 0;
+	text-align: center;
+}
+
+.formField {
+	margin-bottom: 16px;
+}
+
+.formField label {
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	color: #555;
+	margin-bottom: 6px;
+}
+
+.formField input {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 16px;
+	transition: border-color 0.2s;
+}
+
+.formField input:focus {
+	border-color: #4caf50;
+	outline: none;
+}
+
+.manualEntryOption {
+	margin-top: 16px;
+	text-align: center;
+}
+
+.ocrEngineSelector {
+	margin: 20px 0;
+	padding: 15px;
+	background-color: #f5f5f5;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.ocrRadioLabel {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 4px;
+	transition: background-color 0.2s;
+}
+
+.ocrRadioLabel:hover {
+	background-color: #e0e0e0;
+}
+
+.ocrRadioLabel input[type='radio'] {
+	accent-color: #007bff;
+	margin-right: 5px;
+}

@@ -1,31 +1,111 @@
-# React Native Web example
+# Budget Tracker
 
-This example features how to use [react-native-web](https://github.com/necolas/react-native-web) to bring the platform-agnostic Components and APIs of React Native to the web.
+Aplikacja do śledzenia budżetu i zarządzania wydatkami z funkcją skanowania paragonów.
 
-> **High-quality user interfaces**: React Native for Web makes it easy to create fast, adaptive web UIs in JavaScript. It provides native-like interactions, support for multiple input modes (touch, mouse, keyboard), optimized vendor-prefixed styles, built-in support for RTL layout, built-in accessibility, and integrates with React Dev Tools.
->
-> **Write once, render anywhere**: React Native for Web interoperates with existing React DOM components and is compatible with the majority of the React Native API. You can develop new components for native and web without rewriting existing code. React Native for Web can also render to HTML and critical CSS on the server using Node.js.
+## Funkcjonalności
 
-## Deploy your own
+- **Śledzenie wydatków**: Zapisuj i monitoruj swoje wydatki
+- **Skanowanie paragonów**: Automatyczne rozpoznawanie danych z paragonów
+- **Analiza budżetu**: Wykresy i statystyki wydatków
+- **Kategorie wydatków**: Grupowanie wydatków według kategorii
+- **Tryb ciemny/jasny**: Dostosuj wygląd aplikacji do swoich preferencji
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-react-native-web)
+## Technologie
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-react-native-web&project-name=with-react-native-web&repository-name=with-react-native-web)
+- Next.js
+- MongoDB
+- NextAuth.js
+- Chart.js
+- Tesseract.js (OCR)
+- EasyOCR (OCR poprzez Python)
+- Sharp (przetwarzanie obrazów)
 
-## How to use
+## Instalacja i uruchomienie lokalnie
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+1. Sklonuj repozytorium
 
-```bash
-npx create-next-app --example with-react-native-web with-react-native-web-app
-```
+   ```bash
+   git clone https://github.com/twoje-konto/budget-tracker.git
+   cd budget-tracker
+   ```
 
-```bash
-yarn create next-app --example with-react-native-web with-react-native-web-app
-```
+2. Zainstaluj zależności
 
-```bash
-pnpm create next-app --example with-react-native-web with-react-native-web-app
-```
+   ```bash
+   npm install
+   ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+3. Zainstaluj EasyOCR (opcjonalnie, wymaga Pythona)
+
+   ```bash
+   pip install easyocr
+   ```
+
+4. Utwórz plik `.env.local` i dodaj wymagane zmienne środowiskowe
+
+   ```
+   MONGODB_URI=mongodb+srv://...
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=twoj-tajny-klucz
+   ```
+
+5. Uruchom aplikację w trybie deweloperskim
+
+   ```bash
+   npm run dev
+   ```
+
+6. Otwórz [http://localhost:3000](http://localhost:3000) w przeglądarce
+
+## Wdrożenie na Vercel
+
+1. Utwórz konto na [Vercel](https://vercel.com/)
+
+2. Zainstaluj Vercel CLI
+
+   ```bash
+   npm install -g vercel
+   ```
+
+3. Zaloguj się do Vercel
+
+   ```bash
+   vercel login
+   ```
+
+4. Wdróż aplikację
+
+   ```bash
+   vercel
+   ```
+
+5. Skonfiguruj zmienne środowiskowe w panelu Vercel:
+
+   - `MONGODB_URI`
+   - `NEXTAUTH_URL` (adres Twojej aplikacji po wdrożeniu)
+   - `NEXTAUTH_SECRET`
+
+6. Opcjonalnie, aby skonfigurować automatyczne wdrożenia, połącz repozytorium GitHub z projektem Vercel
+
+## Funkcja OCR - skanowanie paragonów
+
+Aplikacja oferuje dwie metody OCR do skanowania paragonów:
+
+1. **Tesseract.js** - działa w przeglądarce, szybszy ale mniej dokładny
+2. **EasyOCR** - wymaga Pythona, dokładniejszy ale wolniejszy
+
+W środowisku produkcyjnym na Vercel:
+
+- EasyOCR jest instalowany automatycznie podczas wdrażania
+- Pliki tymczasowe są przechowywane w `/tmp`
+- Przetwarzanie jest ograniczone czasowo do 60 sekund
+
+## Znane problemy i ograniczenia
+
+- Rozpoznawanie paragonów ma ograniczoną skuteczność (Tesseract ~60%, EasyOCR ~70%)
+- Duże pliki obrazów mogą powodować problemy z przetwarzaniem
+- W środowisku produkcyjnym czas przetwarzania jest ograniczony do 60 sekund
+
+## Licencja
+
+Ten projekt jest licencjonowany na warunkach licencji MIT.

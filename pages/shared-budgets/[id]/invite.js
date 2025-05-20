@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native'
 import { useRouter } from 'next/router'
 import Card from '../../../components/common/Card'
 import Button from '../../../components/common/Button'
+import styles from './Invite.module.css'
 
 export default function InviteUser() {
 	const router = useRouter()
@@ -48,80 +48,48 @@ export default function InviteUser() {
 	}
 
 	return (
-		<ScrollView style={styles.container}>
-			<Card style={styles.form}>
-				<Text style={styles.title}>Zaproś osobę do budżetu</Text>
+		<div className={styles.container}>
+			<Card className={styles.form}>
+				<h1 className={styles.title}>Zaproś osobę do budżetu</h1>
 
-				<View style={styles.inputGroup}>
-					<Text style={styles.label}>Adres email</Text>
-					<TextInput
-						style={styles.input}
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="email">
+						Adres email
+					</label>
+					<input
+						id="email"
+						className={styles.input}
 						value={email}
-						onChangeText={setEmail}
+						onChange={e => setEmail(e.target.value)}
 						placeholder="email@przykład.pl"
-						keyboardType="email-address"
-						autoCapitalize="none"
+						type="email"
+						autoCapitalize="off"
 					/>
-				</View>
+				</div>
 
-				<View style={styles.inputGroup}>
-					<Text style={styles.label}>Udział w budżecie (%)</Text>
-					<TextInput
-						style={styles.input}
+				<div className={styles.inputGroup}>
+					<label className={styles.label} htmlFor="contribution">
+						Udział w budżecie (%)
+					</label>
+					<input
+						id="contribution"
+						className={styles.input}
 						value={contributionRatio}
-						onChangeText={setContributionRatio}
+						onChange={e => setContributionRatio(e.target.value)}
 						placeholder="50"
-						keyboardType="numeric"
+						type="number"
+						min="0"
+						max="100"
 					/>
-					<Text style={styles.hint}>Określ procentowy udział zaproszonej osoby w budżecie</Text>
-				</View>
+					<p className={styles.hint}>Określ procentowy udział zaproszonej osoby w budżecie</p>
+				</div>
 
-				{error ? <Text style={styles.errorText}>{error}</Text> : null}
+				{error && <p className={styles.errorText}>{error}</p>}
 
-				<Button title={loading ? 'Wysyłanie...' : 'Wyślij zaproszenie'} onPress={handleInvite} disabled={loading} />
+				<Button onClick={handleInvite} disabled={loading}>
+					{loading ? 'Wysyłanie...' : 'Wyślij zaproszenie'}
+				</Button>
 			</Card>
-		</ScrollView>
+		</div>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#f8f9fa',
-	},
-	form: {
-		margin: 16,
-		padding: 16,
-	},
-	title: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		marginBottom: 20,
-		textAlign: 'center',
-	},
-	inputGroup: {
-		marginBottom: 16,
-	},
-	label: {
-		fontSize: 16,
-		marginBottom: 8,
-		fontWeight: '500',
-	},
-	input: {
-		backgroundColor: 'white',
-		borderWidth: 1,
-		borderColor: '#ddd',
-		borderRadius: 8,
-		padding: 12,
-		fontSize: 16,
-	},
-	hint: {
-		fontSize: 12,
-		color: '#666',
-		marginTop: 4,
-	},
-	errorText: {
-		color: 'red',
-		marginBottom: 10,
-	},
-})

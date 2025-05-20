@@ -1,0 +1,85 @@
+.container {
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.header {
+	margin-bottom: 24px;
+}
+
+.title {
+	font-size: 28px;
+	font-weight: bold;
+	margin: 0 0 12px 0;
+	color: #333;
+}
+
+.description {
+	font-size: 16px;
+	color: #666;
+	margin: 0 0 16px 0;
+	line-height: 1.5;
+}
+
+.budget {
+	font-size: 20px;
+	font-weight: 500;
+	color: #2e7d32;
+	margin: 0;
+}
+
+.section {
+	margin-bottom: 24px;
+}
+
+.sectionTitle {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0 0 16px 0;
+	color: #333;
+}
+
+.memberItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 0;
+	border-bottom: 1px solid #eee;
+}
+
+.memberItem:last-child {
+	border-bottom: none;
+}
+
+.memberName {
+	font-size: 16px;
+	font-weight: 500;
+	margin: 0;
+	color: #333;
+}
+
+.memberRole {
+	font-size: 14px;
+	color: #666;
+	margin: 0;
+}
+
+.memberShare {
+	font-size: 14px;
+	font-weight: 500;
+	color: #2e7d32;
+	margin: 0;
+}
+
+.inviteButton {
+	margin-top: 16px;
+}
+
+.loadingText,
+.errorText {
+	text-align: center;
+	padding: 40px;
+	font-size: 16px;
+	color: #666;
+}

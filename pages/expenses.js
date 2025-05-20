@@ -140,12 +140,12 @@ export default function ExpensesPage() {
 			}
 		}
 
-		// Jeśli categoryId jest obiektem (spopulowane), zwróć go bezpośrednio
+		
 		if (typeof categoryId === 'object' && categoryId._id) {
 			return categoryId
 		}
 
-		// W przeciwnym razie szukaj kategorii po ID
+		
 		return (
 			categories.find(cat => cat._id === categoryId) || {
 				name: 'Brak kategorii',

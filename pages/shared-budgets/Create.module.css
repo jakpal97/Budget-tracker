@@ -1,0 +1,57 @@
+.container {
+	padding: 20px;
+	background-color: #f8f9fa;
+	min-height: 100vh;
+}
+
+.form {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 24px;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0 0 24px 0;
+	text-align: center;
+	color: #333;
+}
+
+.inputGroup {
+	margin-bottom: 20px;
+}
+
+.label {
+	display: block;
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 8px;
+	color: #333;
+}
+
+.input {
+	width: 100%;
+	padding: 12px;
+	font-size: 16px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: white;
+	transition: border-color 0.2s ease;
+}
+
+.input:focus {
+	outline: none;
+	border-color: #3498db;
+}
+
+.textArea {
+	min-height: 100px;
+	resize: vertical;
+}
+
+.errorText {
+	color: #e74c3c;
+	margin: 0 0 16px 0;
+	font-size: 14px;
+}
